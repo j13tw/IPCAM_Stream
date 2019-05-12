@@ -1,0 +1,36 @@
+# Get IPCAM Service IP & Service Mode (RTMP / RTSP)
+# Check your Disk Label have G:
+# Package to Use in this Project :
+  |-python package : flask, rtsp
+  |-extern package : rtmpdump
+    |-unpackage rtmpdump-"xx.ver"-"PC.ver".zip to dir and add to path
+/**********************************************************************************************************************/ 
+# Streaming Note By Potocol URL
+1. RTSP Streaming   
+   |-RTSP URL : rtsp://IPCAM_IP:8554/channel=0/subtype=0/vod=Year(4)Month(2)Date(2)-Hour(2)Minute(2)Second(2)
+   |-RTSP URL example : rtsp://192.168.0.100:8554/channel=0/subtype=0/vod=20180921-123456
+2. RTMP Streaming
+   |-Need Use uuid to recognize your PC to Streaming By RTMP URL
+   |-RTMP URL : rtsp://IPCAM_IP:1935/A0 - 0 - 0 -0 - (your_uuid) - IPCAM_account - IPCAM_password
+   |-RTMP URL example : rtmp://192.168.0.100:1935/A0 - 0 - 0 - 0 - C8244C5037F000019141179085601DE4 - admin - 888888
+3. if Your uuid can't Record the RTMP to File :
+   |-Open Your IPCAM Setup Webpage Login your account to Watch RTMP Streaming
+   |-Open Wireshark Software Monitor Your RTMP Potocol Packet which RTMP URL uuid in use 
+   |- Change your uuid in RTMP File and Test it to Record now !!!
+/**********************************************************************************************************************/
+# Run Code Notice Space and which Function in File to use 
+1. Change IPCAM IP in code
+2. Check your Service Mode your PC Network port is open
+   |-RTSP port : 8554
+   |-RTMP port : 1935
+3. Test By RTMP Record have two Files
+   |-RTMP_OK.py     --> to G:/year-month/date/OK
+   |-RTMP_Backup.py --> to G:/year-month/date/Backup    
+4. Live Stream on RTSP File is RTSP_Streaming.py 
+5. RTMP Final Run Code File is RTMP_Final.py
+6. Watch RTMP Streaming on Web File in  /WEB_Streaming/app.py
+   |-Change RTMP IP in /templates/rtmp.html
+   |-Change Web URL in app.py (backend By Flask) 
+/**********************************************************************************************************************/
+Bug & Error Mail to j13tw@yahoo.com.tw or Pull Request Github.com/j13tw
+$2018 Design By Zheng Sheng in Nation Taichung Technology University
